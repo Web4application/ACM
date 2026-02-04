@@ -1,0 +1,27 @@
+const referenceImagesPayload: VideoGenerationReferenceImage[] = [];
+for (const img of refImages) {
+  referenceImagesPayload.push({
+  image: {
+    imageBytes: base64EncodeString, // base64 encoded string
+    mimeType: 'image/png',  // Could be any other IANA standard MIME type for the source data.
+  },
+    referenceType: VideoGenerationReferenceType.ASSET,
+  });
+}
+let operation = await ai.models.generateVideos({
+  model: 'veo-3.1-generate-preview',
+  prompt: 'A video of this character, in this environment, using this item.', // prompt is required
+  config: {
+    numberOfVideos: 1,
+    referenceImages: referenceImagesPayload,
+    resolution: '720p',
+    aspectRatio: '16:9'
+  }
+});
+while (!operation.done) {
+  await new Promise(resolve => setTimeout(resolve, 10000));
+  operation = await ai.operations.getVideosOperation({operation: operation});
+}
+const downloadLink = operation.response?.generatedVideos?.[0]?.video?.uri;
+// The response.body contains the MP4 bytes. You must append an API key when fetching from the download link.
+const response = await fetch(`${downloadLink}&key=${process.env.API_KEY}`);
