@@ -1,0 +1,32 @@
+diff --git a/.gitlab/os-linux.yml b/.gitlab/os-linux.yml
+index b8744327ff554fe6e4669c85978255c3fbc447f6..511b66a8b96b92d9994da4f650372b6e105f755d 100644
+--- a/.gitlab/os-linux.yml
++++ b/.gitlab/os-linux.yml
+@@ -597,6 +597,7 @@
+     variables:
+         CMAKE_CONFIGURATION: hip6.3_nvidia
+         CTEST_LABELS: "HIP"
++        CMAKE_CUDA_ARCHITECTURES_NATIVE_CLAMP: 1
+ 
+ ### C++ modules
+ 
+diff --git a/Tests/HIP/ArchSpecial/CMakeLists.txt b/Tests/HIP/ArchSpecial/CMakeLists.txt
+index 2bc6bd2e963e69419e8d79c4b758d97887953b4d..de7c7ebbc80a07f7c7b6af28b25a044396c2d0fa 100644
+--- a/Tests/HIP/ArchSpecial/CMakeLists.txt
++++ b/Tests/HIP/ArchSpecial/CMakeLists.txt
+@@ -57,7 +57,14 @@ try_compile(native_archs_compiles
+   COMPILE_DEFINITIONS ${try_compile_flags}
+   OUTPUT_VARIABLE output
+   )
+-verify_output(native)
++if(native_archs_compiles)
++  verify_output(native)
++elseif("$ENV{CMAKE_CUDA_ARCHITECTURES_NATIVE_CLAMP}"
++    AND CMAKE_HIP_COMPILER_ID STREQUAL "NVIDIA"
++    AND output MATCHES "Unsupported gpu architecture")
++  # nvcc -arch=native is not affected by the clamp
++  set(native_archs_compiles 1)
++endif()
+ 
+ if(all_archs_compiles AND all_major_archs_compiles AND native_archs_compiles)
+   set(CMAKE_HIP_ARCHITECTURES all)
