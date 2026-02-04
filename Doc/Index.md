@@ -1,3 +1,4 @@
+
 ##
 ##
 ##        Mod title:  Sur.ly
@@ -5,7 +6,7 @@
 ##      Mod version:  3.0.0
 ##  Works on FluxBB:  1.5.10
 ##     Release date:  2017-03-01
-##           Author:  surdotly (surdotly@gmail.com)
+##           Author:  seriki yakub (kubulee.kl@gmail.com)
 ##
 ##      Description:  Sur.ly alters the outbound links on your site so that visitors can view external target pages without leaving your domain.
 ##
