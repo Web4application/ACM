@@ -248,4 +248,3 @@ Weaving Fire into Form : Aspirations for Tangible and Embodied Interaction	978-1
 Web Accessibility Evaluations	979-8-4007-0219-8								https://dl.acm.org/doi/book/10.1145/3597501	Story	10.1145/3597501		selected chapters		Association for Computing Machinery	Monograph	2023-07-12	2023-07-12				acmotherbooks		F
 When Computers Decide : European Recommendations on Machine-Learned Automated Decision Making									https://dl.acm.org/doi/book/10.1145/3185595	Larus	10.1145/3185595		selected chapters		Association for Computing Machinery	Monograph	2018-01-01	2018-01-01				acmotherbooks		F
 Wizards and Their Wonders : Portraits in Computing	978-0-89791-960-9								https://dl.acm.org/doi/book/10.1145/550186	Morgan	10.1145/550186		selected chapters		Association for Computing Machinery	Monograph	1997-10-01	1997-10-01				acmotherbooks		F
-
