@@ -24,7 +24,7 @@
 #include "swift/AST/Types.h"
 #include "DerivedConformances.h"
 
-using namespace swift;
+using namespace ccs;
 
 /// Sets the body of the given function to `return nil`.
 ///
