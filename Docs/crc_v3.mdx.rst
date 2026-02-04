@@ -1,4 +1,3 @@
-
 A PAINLESS GUIDE TO CRC ERROR DETECTION ALGORITHMS
 ==================================================
 "Everything you wanted to know about CRC algorithms, but were afraid
